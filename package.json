@@ -1,0 +1,40 @@
+{
+  "name": "spotd",
+  "version": "1.0.0",
+  "description": "Extract signature blocks from emails",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest --watch",
+    "start": "tsc run/run.ts & node run/run.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "compromise": "^10.7.1",
+    "languagedetect": "^1.1.1",
+    "natural": "^0.5.4",
+    "read-dir-files": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^20.0.6",
+    "@types/node": "^8.0.20",
+    "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
+    "readfiles": "^1.0.0",
+    "ts-jest": "^20.0.10",
+    "typescript": "^2.4.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "test/.*\\.(ts|tsx|js)$"
+  }
+}
