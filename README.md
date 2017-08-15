@@ -21,7 +21,9 @@ Hello,
 
 This is a sample email to test spotd library. It should detect this email's signature.
 
-Give attitude scratch at fleas, meow until belly rubs, hide behind curtain when vacuum cleaner is on scratch strangers and poo on owners food for vommit food and eat it again kitten is playing with dead mouse scratch leg
+Give attitude scratch at fleas, meow until belly rubs, hide behind curtain when vacuum
+cleaner is on scratch strangers and poo on owners food for vommit food and eat it again
+kitten is playing with dead mouse scratch leg.
 
 Regards,
 
