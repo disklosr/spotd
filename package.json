@@ -6,9 +6,10 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc & cp-cli src\\lang\\ lib\\lang\\ -r",
-    "package": "cd dist & npm pack ..",
+    "package": "build & cd dist & npm pack ..",
     "test": "jest",
-    "transform": "ts-node ./test/run.ts"
+    "transform": "ts-node ./test/run.ts",
+    "release": "build & npm publish"
   },
   "author": "disklosr",
   "license": "MIT",
