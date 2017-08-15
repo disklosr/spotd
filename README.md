@@ -15,7 +15,7 @@ Install by running this command:
 Then use it like this:
 
 ```js
-import { extract } from '../src/extractor';
+var spotd = require("spotd");
 let email = `
 Hello,
 
@@ -36,7 +36,7 @@ This text is not part of the signature and should get ignored.
 
 `; 
 
-let signature = extract(email);
+let signature = spotd.extract(email);
 
 /* Outputs:
 
