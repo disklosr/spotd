@@ -44,7 +44,7 @@ export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntege
     let max = 0,
         result = { startIndex: -1, endIndex: -1 };
 
-    console.log("Array received: " + arrIntegers)
+    //console.log("Array received: " + arrIntegers)
 
     if (arrIntegers.length === 0) {
         return result;
@@ -52,7 +52,7 @@ export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntege
 
     result.startIndex = result.endIndex = 0;
 
-    console.log(arrIntegers)
+    //console.log(arrIntegers)
 
     for (let i = 1; i < arrIntegers.length; i++) {
         for (let j = 0; j < arrIntegers.length - i + 1; j++) {
@@ -64,7 +64,7 @@ export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntege
             }
         }
     }
-    console.log({ sum: max, start: result.startIndex, end: result.endIndex });
+    //console.log({ sum: max, start: result.startIndex, end: result.endIndex });
     return result;
 }
 
@@ -109,6 +109,6 @@ export function debug(text: string): string {
 
     
     let returnValue = detectedLanguage + '\n' + table.toString() + '\n' + 'start: ' + startIndex + '    end: ' + endIndex;
-    console.log(returnValue);
+    //console.log(returnValue);
     return returnValue;
 }

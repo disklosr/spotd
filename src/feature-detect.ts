@@ -79,7 +79,7 @@ const FEATURE_FULL_NAME = {
     }
 };
 
-const ENDS_WITH_PUNCTUATION = {
+const FEATURE_ENDS_WITH_PUNCTUATION = {
     name: Features.ENDS_WITH_PUNCTUATION, 
     test: (line: string) => {
         return /[,!:]$/.test(line);
@@ -139,7 +139,7 @@ export const suppotedFeatures = [
     FEATURE_NO_STOP_WORDS,
     FEATURE_CAPITAL_CASE,
     FEATURE_DOUBLE_DASH,
-    ENDS_WITH_PUNCTUATION
+    FEATURE_ENDS_WITH_PUNCTUATION
 ]
 
 const detectLanguageOrDefault = (lineOfText: string, defaultLanguage: string) => {
