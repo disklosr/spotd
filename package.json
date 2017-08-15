@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc & cp-cli src\\lang\\ lib\\lang\\ -r",
     "package": "cd dist & npm pack ..",
-    "test": "jest --watch",
+    "test": "jest",
     "transform": "ts-node ./test/run.ts"
   },
   "author": "disklosr",

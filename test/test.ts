@@ -1,4 +1,4 @@
-import {detectFeaturesInText, Features} from '../lib/feature-detect'
+import {detectFeaturesInText, Features} from '../src/feature-detect'
 
 const english = 'english';
 const french = 'french';

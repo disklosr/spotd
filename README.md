@@ -52,6 +52,11 @@ http://github.com
 */
 ```
 
+You can also place email examples in folder `test/src` and run them through this library to output signatures in folder ``test/dest`.
+For this, just place your files in src folder and run
+
+    npm run transform
+
 ## How does this work?
 
 `Spotd` works in a two-step process:
