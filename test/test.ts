@@ -6,12 +6,12 @@ const unknownLanguage = 'zulu';
 
 
 it('correctly detects english sentence', () => {
-  var detected = detectFeaturesInText('Hello There! My name is Anas and I am writing some tests', english);
+  var detected = detectFeaturesInText('Hello There! My name is Harry and I am writing some tests', english);
   expect(detected).toContain(Features.SENTENCE);
 })
 
 it('should detects a french sentence', () => {
-  var detected = detectFeaturesInText('Mon nom est Anas et je suis entrain de faire des tests', french);
+  var detected = detectFeaturesInText('Mon nom est Harry et je suis entrain de faire des tests', french);
   expect(detected).toContain(Features.SENTENCE);
 })
 
@@ -53,7 +53,7 @@ it('correctly detects full name via nlp analysis with a dot at the end', () => {
 })
 
 it('correctly detects full name via case analysis', () => {
-  var detected = detectFeaturesInText('Shaiba BUTT', english);
+  var detected = detectFeaturesInText('Shaiba POTTER', english);
   expect(detected).toContain(Features.FULL_NAME);
 })
 
@@ -74,7 +74,7 @@ it('shouldnt detect name when word contains accentuated char' , () => {
 })
 
 it('correctly detects email', () => {
-  var detected = detectFeaturesInText('my email is pirhanas@windowslive.com of', english);
+  var detected = detectFeaturesInText('my email is harry.potter@gmail.com of', english);
   expect(detected).toContain(Features.EMAIL);
 })
 
@@ -95,7 +95,12 @@ it('correctly detects white space lines', () => {
 })
 
 it('correctly detects a sentence with capital case', () => {
-  var detected = detectFeaturesInText('Official Revolut App', english);
+  var detected = detectFeaturesInText('United States of America', english);
+  expect(detected).toEqual([Features.CAPITAL_CASE, Features.NO_STOP_WORDS].sort());
+})
+
+it('correctly detects a sentence with capital case, with some stop words in lower case', () => {
+  var detected = detectFeaturesInText('United States of America', english);
   expect(detected).toEqual([Features.CAPITAL_CASE, Features.NO_STOP_WORDS].sort());
 })
 
