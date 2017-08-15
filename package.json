@@ -2,10 +2,10 @@
   "name": "spotd",
   "version": "1.0.0",
   "description": "Extract signature blocks from emails",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "build": "tsc & cp-cli src\\lang\\ dist\\lang\\ -r",
+    "build": "tsc & cp-cli src\\lang\\ lib\\lang\\ -r",
     "package": "cd dist & npm pack ..",
     "test": "jest --watch",
     "transform": "ts-node ./test/run.ts"
