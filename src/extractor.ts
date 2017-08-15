@@ -95,8 +95,6 @@ export function debug(text: string): string {
         head: header
     });
 
-    //let table: string[][] = [header];
-
     text.split("\n").forEach((line, index) => {
         let row = [index.toString(), scorePerLineArray[index].toString(), line.slice(0, 20)];
         for(let item in Features){
@@ -107,8 +105,14 @@ export function debug(text: string): string {
         table.push(row);
     })
 
+    let returnValue = 
+    `
+Language: ${detectedLanguage}
+startIndex: ${startIndex}
+endIndex: ${endIndex}
+${table}
+    `;
     
-    let returnValue = detectedLanguage + '\n' + table.toString() + '\n' + 'start: ' + startIndex + '    end: ' + endIndex;
     //console.log(returnValue);
     return returnValue;
 }

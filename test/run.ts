@@ -1,4 +1,4 @@
-import { extract } from '../src/extractor';
+import { debug } from '../src/extractor';
 
 var readDirFiles = require('read-dir-files');
 var fs = require('fs');
@@ -9,7 +9,7 @@ const destinationDir = 'dst';
 const encoding = 'utf8';
 
 
-const transform = (content: string) => extract(content);
+const transform = (content: string) => debug(content);
 
 
 process.chdir('./test');
