@@ -1,6 +1,6 @@
 {
   "name": "spotd",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Extract signature blocks from emails",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
