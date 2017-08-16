@@ -50,8 +50,6 @@ export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntege
         return result;
     }
 
-    result.startIndex = result.endIndex = 0;
-
     //console.log(arrIntegers)
 
     for (let i = 1; i < arrIntegers.length; i++) {
@@ -81,6 +79,10 @@ export function extract(text: string): string {
     let scorePerLineArray = featuresPerLine.map(features => calculateLineScore(features));
     scorePerLineArray = updateScoresBasedOnLinePosition(scorePerLineArray);
     let { startIndex, endIndex } = findMaxSumOfContiguousSubArray(scorePerLineArray);
+
+    if(startIndex == -1 && endIndex == -1)
+        return '';
+    
     return text.split("\n").slice(startIndex, endIndex + 1).join("\n")
 }
 
