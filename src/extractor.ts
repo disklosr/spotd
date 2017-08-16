@@ -41,7 +41,7 @@ const sumOfSub = function (array: Array<number>, start: number, end: number): nu
 /** A js implementation of Kadane's algorithm to find max sum of contiguous subarray within a given array */
 export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntegers: Array<number>): { startIndex: number, endIndex: number } {
 
-    let max = 0,
+    let max = 1,
         result = { startIndex: -1, endIndex: -1 };
 
     //console.log("Array received: " + arrIntegers)
@@ -57,7 +57,7 @@ export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntege
     for (let i = 1; i < arrIntegers.length; i++) {
         for (let j = 0; j < arrIntegers.length - i + 1; j++) {
             let potentialMax = sumOfSub(arrIntegers, j, j + i)
-            if (potentialMax > max) {
+            if (potentialMax >= max) {
                 max = potentialMax;
                 result.startIndex = j;
                 result.endIndex = i + j - 1;
@@ -68,6 +68,10 @@ export const findMaxSumOfContiguousSubArray = function optimalSolution(arrIntege
     return result;
 }
 
+const updateScoresBasedOnLinePosition = (scorePerLine: Array<number>): Array<number> => {
+    return scorePerLine;
+}
+
 
 /** Extracts a possible signature block from an arbitrary text block */
 export function extract(text: string): string {
@@ -75,6 +79,7 @@ export function extract(text: string): string {
     let detectedLanguage = languageDetector.detect(text)[0][0] || defaultLanguage;
     let featuresPerLine = text.split("\n").map(line => detectFeaturesInText(line, detectedLanguage));
     let scorePerLineArray = featuresPerLine.map(features => calculateLineScore(features));
+    scorePerLineArray = updateScoresBasedOnLinePosition(scorePerLineArray);
     let { startIndex, endIndex } = findMaxSumOfContiguousSubArray(scorePerLineArray);
     return text.split("\n").slice(startIndex, endIndex + 1).join("\n")
 }
@@ -84,6 +89,7 @@ export function debug(text: string): string {
     let detectedLanguage = languageDetector.detect(text)[0][0] || defaultLanguage;
     let featuresPerLine = text.split("\n").map(line => detectFeaturesInText(line, detectedLanguage));
     let scorePerLineArray = featuresPerLine.map(features => calculateLineScore(features));
+    scorePerLineArray = updateScoresBasedOnLinePosition(scorePerLineArray);
     let { startIndex, endIndex } = findMaxSumOfContiguousSubArray(scorePerLineArray);
 
     let header = ['#', 'SCR', 'TXT'];

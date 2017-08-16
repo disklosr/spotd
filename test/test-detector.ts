@@ -95,13 +95,13 @@ it('correctly detects white space lines', () => {
 })
 
 it('correctly detects a sentence with capital case', () => {
-  var detected = detectFeaturesInText('United States of America', english);
+  var detected = detectFeaturesInText('United States America', english);
   expect(detected).toEqual([Features.CAPITAL_CASE, Features.NO_STOP_WORDS].sort());
 })
 
 it('correctly detects a sentence with capital case, with some stop words in lower case', () => {
   var detected = detectFeaturesInText('United States of America', english);
-  expect(detected).toEqual([Features.CAPITAL_CASE, Features.NO_STOP_WORDS].sort());
+  expect(detected).toEqual([Features.CAPITAL_CASE].sort());
 })
 
 it('correctly detects a sentence with no stop words', () => {
