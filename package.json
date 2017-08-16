@@ -9,7 +9,7 @@
     "package": "npm run build & cd dist & npm pack ..",
     "test": "jest",
     "transform": "ts-node ./test/run.ts",
-    "release": "npm run build & npm publish"
+    "release": "npm run build && npm version patch && npm publish"
   },
   "author": "disklosr",
   "license": "MIT",
