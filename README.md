@@ -1,6 +1,6 @@
 ## What is this?
 
-A library to help extract signature blocks from an emails. 
+Spotd (pronounced Spotted) is a tool to help extract signature blocks from an emails. 
 
 The input email is assumed to be in a plain text format.
 
