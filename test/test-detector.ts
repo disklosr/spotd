@@ -114,6 +114,11 @@ it('correctly detects a double dash (start of signature block)', () => {
   expect(detected).toContain(Features.DOUBLE_DASH);
 })
 
+it('should not detect full name', () => {
+  var detected = detectFeaturesInText('Also, please use PNM not AEP for any sleeving for EPE.', english);
+  expect(detected).not.toContain(Features.FULL_NAME);
+})
+
 
 
 

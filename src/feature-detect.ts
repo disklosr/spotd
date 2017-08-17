@@ -74,8 +74,9 @@ const FEATURE_FULL_NAME = {
         let tokens = tokenizer.tokenize(line).filter((token: string) => !digitsRegex.test(token));
         if(tokens.length < 2)
             return false;
+
         let lastToken = tokens[tokens.length - 1];
-        return lastToken.toUpperCase() == lastToken;
+        return lastToken.toUpperCase() == lastToken && FEATURE_CAPITAL_CASE.test(line);
     }
 };
 
