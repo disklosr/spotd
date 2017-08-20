@@ -15,8 +15,3 @@ it('should find correct indices', () => {
   var indices = findMaxSumOfContiguousSubArray([-14,-15,-16,-17]);
   expect(indices).toMatchObject({endIndex: -1, startIndex: -1});
 });
-
-
-
-
-
