@@ -1,25 +1,23 @@
-import { debug } from '../src/extractor';
-
-var readDirFiles = require('read-dir-files');
-var fs = require('fs');
+import { debug, extract } from '../src/extractor';
+import * as fs from 'fs';
 
 
-const sourceDir = 'src';
-const destinationDir = 'dst';
 const encoding = 'utf8';
 
+const startFile = 1
+const lastFile = 20;
+const sourceFolder = './test/src/';
+const destFolder = './test/dst/';
 
-const transform = (content: string) => debug(content);
 
+const buildSrcFileName = (index: number) => sourceFolder + index + '.txt';
+const buildDstFileName = (index: number) => destFolder + index + '.txt';
 
-process.chdir('./test');
-readDirFiles.list(sourceDir, (err: object, filenames: Array<string>) => {
-  if (err) 
-    return console.log(err);
-  
-  filenames.slice(1, filenames.length - 1).forEach((fileName: string) => {
-    let content = fs.readFileSync(fileName, encoding);
-    let newFileName = fileName.replace(sourceDir, destinationDir);
-    fs.writeFileSync(newFileName, transform(content), encoding);
-  });
-});
+for (var i = startFile; i <= lastFile; i++) {
+    console.log('#' + i)
+    let content = fs.readFileSync(buildSrcFileName(i), encoding);
+    let signature = extract(content);
+    let debugInfo = debug(content);
+    console.log(debugInfo);
+    fs.writeFileSync(buildDstFileName(i), signature + '\n##################\n' + debugInfo, {encoding: 'utf8'});
+}

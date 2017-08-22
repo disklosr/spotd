@@ -32,6 +32,8 @@ export enum Features {
     ENDS_WITH_PUNCTUATION = 'ENDS_WITH_PUNCTUATION'
 }
 
+const featuresArray = Object.keys(Features).map(feature => feature);
+
 const FEATURE_EMPTY_LINE = { 
     name: Features.EMPTY_LINE,
     test: (line: string) => !line.trim() 
@@ -68,7 +70,7 @@ const FEATURE_FULL_NAME = {
         let foundName = nlp(line).people().out('array');
         let foundNameViaNlp = foundName.length > 0;
 
-        if(foundNameViaNlp) 
+        if(foundNameViaNlp && foundName[0].toLowerCase() == line.toLowerCase()) 
             return true;
 
         let tokens = tokenizer.tokenize(line).filter((token: string) => !digitsRegex.test(token));
@@ -90,7 +92,7 @@ const FEATURE_ENDS_WITH_PUNCTUATION = {
 const FEATURE_DOUBLE_DASH = {
     name: Features.DOUBLE_DASH, 
     test: (line: string) => {
-        return line.trim() == '--';
+        return /^[-_]+$/.test(line.trim());
     }
 };
 
@@ -109,10 +111,11 @@ const FEATURE_CAPITAL_CASE = {
         let words: Array<string> = tokenizer.tokenize(line).filter((token: string) => !digitsRegex.test(token));
         let tokensWithoutStopWords = words.filter((token: string) => { return selectedStopWords.indexOf(token.toLowerCase()) < 0 });
 
-        if(words.length < 3)
+        if(words.length < 2)
             return false;
+        
         let firstLetters = tokensWithoutStopWords.map(token => token[0]).join('');
-        return firstLetters.toUpperCase() == firstLetters;
+        return firstLetters && firstLetters.toUpperCase() == firstLetters;
     }
 };
 
@@ -157,8 +160,8 @@ const setSelectedStopWords = (languageOfCurrentLine: string, languageOfWholeEmai
     else if (languageOfWholeEmail && stopwords[languageOfWholeEmail] != null)
         selectedStopWords = stopwords[languageOfWholeEmail];
     
-    else
-        console.log(`warning: detected ${languageOfCurrentLine} lang for current line and ${languageOfWholeEmail} for the full email but found no stop words for these`);
+    // else
+    //     console.log(`warning: detected ${languageOfCurrentLine} lang for current line and ${languageOfWholeEmail} for the full email but found no stop words for these`);
 }
 
 export const detectFeaturesInText = function (lineOfText: string, language: string): Array<Features> {
@@ -174,4 +177,10 @@ export const detectFeaturesInText = function (lineOfText: string, language: stri
     })
 
     return detectedFeatures.sort();
+}
+
+
+export function getFeaturesAsVector(lineOfText: string, language: string): Array<number>{
+    let detectedFeatures = detectFeaturesInText(lineOfText, language);
+    return featuresArray.map(feature => detectedFeatures.map(feature => Features[feature]).indexOf(feature) > -1 ? 1 : 0);
 }

@@ -25,7 +25,6 @@ it('correctly detects long lines', () => {
   expect(detected).toContain(Features.LONG_LINE);
 })
 
-
 it('correctly detects phone american', () => {
   var detected = detectFeaturesInText('(345) 235 4576', english);
   expect(detected).toContain(Features.PHONE);
@@ -119,6 +118,10 @@ it('should not detect full name', () => {
   expect(detected).not.toContain(Features.FULL_NAME);
 })
 
+it('should not detect capital case', () => {
+  var detected = detectFeaturesInText('avec moi-même.', french);
+  expect(detected).not.toContain(Features.CAPITAL_CASE);
+})
 
 
 

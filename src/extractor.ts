@@ -122,5 +122,5 @@ ${table}
     `;
     
     //console.log(returnValue);
-    return returnValue;
+    return returnValue.toString();
 }
